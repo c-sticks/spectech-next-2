@@ -1,10 +1,14 @@
 export default async function Page() {
-  const aa = () => {};
+  async function action(formData: FormData) {
+    "use server";
+    const name = formData.get("name");
+    console.log(`server action triggered: name is ${name}`);
+  }
 
   return (
     <div>
-      <form aaa={aa}>
-        <input type="text" placeholder="Enter your name" />
+      <form action={action}>
+        <input type="text" name="name" placeholder="Enter your name" />
         <button>SUBMIT</button>
       </form>
     </div>
